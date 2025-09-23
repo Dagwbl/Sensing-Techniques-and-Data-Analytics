@@ -2,6 +2,21 @@
 Author: Jeapo
 title: Smartphone - Based Sensing of Pendulum Vibrations
 jupyter: python3
+format: 
+    html: 
+        toc: true
+        number-sections: true
+        html-math-method: katex
+        toc-expand: 3
+    pdf: 
+        toc: true
+        number-sections: true
+        colorlinks: true
+
+crossref:
+  chapters: true
+editor: 
+    render-on-save: true
 ---
 
 **Instructor:** Mohammad Talebi-Kalaleh  
@@ -13,6 +28,9 @@ jupyter: python3
 
 **Tool Chains**: `Jupyter`->`Quarto`->`PDF`
 
+
+
+# Background
 ## Assignment Outline
 
 1. Setup & Imports  
@@ -27,7 +45,7 @@ jupyter: python3
 Each analysis part includes: data loading, visualization, statistical descriptors, period estimation, damping estimation, and discussion cells.
 
 ```{python}
-# Imports and plotting settings
+#| label: Imports and settings
 import os
 import glob
 import numpy as np
@@ -36,6 +54,7 @@ import scipy.signal as signal
 import scipy.optimize as optimize
 from scipy.stats import skew, kurtosis
 import matplotlib.pyplot as plt
+from IPython.display import display, Markdown
 
 # Ensure figures render in notebook
 %matplotlib inline
@@ -51,9 +70,37 @@ FIG_DIR = os.path.join(BASE_DIR, 'Figures')
 
 ```
 
+
+## Experiment Preparation
+
+### Materials
+1. Smartphone:
+    Type: Xiaomi 10
+    Target sensor: accelerator
+2. String
+3. Toilet paper roll
+4. Camera: Another smartphone
+5. Softer & Version: PhyPhox 1.2.0
+6. Cross beam: 1 Chopstick
+6. Angle measurement: Compass App of Smartphone
+
+### Structure
+
+The pendulum device was constructed as follows:
+
+- A chopstick was used as the cross beam and fixed horizontally to serve as the support.
+- Four lengths of string were cut and tied to the chopstick, spaced evenly to ensure stability.
+- The lower ends of the strings were attached to a toilet paper roll, which acted as the pendulum bob holder.
+- A smartphone (Xiaomi 10) was placed securely inside the toilet paper roll, with its main axis (y) aligned along the swing direction.
+- The PhyPhox app (version 1.2.0) was installed on the smartphone to record acceleration data.
+- A second smartphone was used as a camera to record the motion for reference and angle measurement.
+- The initial angle of displacement was measured using the compass app on the smartphone before release.
+
+This setup allowed for accurate measurement of pendulum motion using the smartphone's accelerometer, while the camera provided visual confirmation and angle calibration.
+
 ## Theoretical Model
 
-### 2.1 Small-Angle Pendulum Period
+### Small-Angle Pendulum Period
 
 For small angular displacements ($\theta \le 15^\circ$), the period of a simple pendulum is given by @eq-simple-pendulum:
 $$
@@ -67,7 +114,7 @@ where:
   * $g$ = gravitational acceleration ($9.81, m/s^2$)
 
 ```{python}
-# Generate theoretical data for comparison
+#| label: Theoretical data for comparison
 def generate_theoretical_pendulum(L, t_max=10, dt=0.01, theta0=15, g=9.81):
     """Generate theoretical pendulum motion for small angles
     Args:
@@ -118,7 +165,7 @@ plt.show()
 print(f'Theoretical periods:\nShort pendulum: {T_short:.3f}s\nLong pendulum: {T_long:.3f}s')
 ```
 
-### 2.2 Damped Oscillation Model
+### Damped Oscillation Model
 
 The amplitude envelope of a damped pendulum follows exponential decay, as shown in @eq-damped-pendulum:
 $$
@@ -133,6 +180,7 @@ where:
   * $t$ = elapsed time (seconds)
 
 ```{python}
+#| label: Damped Oscillation
 def generate_damped_pendulum(L, t_max=10, dt=0.01, theta0=15, zeta=0.1, g=9.81):
     """Generate damped pendulum motion
     Args:
@@ -172,8 +220,6 @@ ax2.set_xlabel('Time (s)')
 ax2.set_ylabel('Angle (rad)')
 ax2.grid(True)
 
-
-
 # Add the +- A_0 exp(-zeta 2pi/T_n t) lines
 for ax, t, theta0, Tn in [
     (ax1, t_short_damped, 15, theoretical_period(L_short)),
@@ -190,9 +236,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Data Preprocessing
+# Data Preprocessing
 
 ```{python}
+#| label: extract and rename data
+#| echo: false
 import zipfile
 import os
 import glob
@@ -274,7 +322,7 @@ if __name__ == "__main__" and False:
 ```
 
 ```{python}
-# Utility functions
+#| label: load_trial_csv
 
 def load_trial_csv(path,start=500,end=10000):
     """Load CSV exported from PhyPhox. 
@@ -286,16 +334,40 @@ def load_trial_csv(path,start=500,end=10000):
     accel_col = df.columns[2]
     df = df.rename(columns={time_col: 'time', accel_col: 'accel'})
     return df[['time','accel']].iloc[start:end]  # trim start/end
+```
 
+```{python}
+#| label: compute descriptors
+#| echo: false
+#| output: false
 def compute_descriptors(x):
     return {
-        'mean': np.mean(x),
-        'variance': np.var(x, ddof=1),
-        'rms': np.sqrt(np.mean(np.square(x))),
-        'skewness': skew(x),
-        'kurtosis': kurtosis(x, fisher=False)  # Pearson's definition
+        'Mean (µ)': np.mean(x),
+        'Variance (σ²)': np.var(x, ddof=1),
+        'Root Mean Square (RMS)': np.sqrt(np.mean(np.square(x))),
+        'Skewness (γ₁)': skew(x),
+        'Kurtosis (γ₂)': kurtosis(x, fisher=False)
     }
 
+```
+
+## Peak-detection algorithms
+
+The estimate_period_via_peaks function is designed to estimate the periods of oscillatory signals by identifying the time intervals between successive peaks in the data. It uses the find_peaks method from the scipy.signal module to locate prominent peaks in the signal, then calculates the time differences between these peaks to determine the periods. This approach is commonly used for analyzing periodic signals, such as those from pendulum or vibration experiments.
+
+Key points:
+
+Inputs:
+time: Array of time values.
+signal_data: Array of signal measurements (e.g., acceleration).
+prominence and distance: Parameters to control peak detection sensitivity.
+Outputs:
+periods: Array of estimated periods (time differences between peaks).
+peaks: Indices of detected peaks.
+This function is useful for extracting the fundamental period of a signal in experimental data analysis.
+
+```{python}
+#| label: estimate period via peaks
 def estimate_period_via_peaks(time, signal_data, prominence=0.5, distance=None):
     # find peaks (positive swings)
     peaks, props = signal.find_peaks(signal_data, prominence=prominence, distance=distance)
@@ -304,7 +376,9 @@ def estimate_period_via_peaks(time, signal_data, prominence=0.5, distance=None):
     peak_times = time[peaks]
     periods = np.diff(peak_times)
     return periods, peaks
-
+```
+```{python}
+#| label: fit exponential decay
 def fit_exponential_decay(peak_times, peak_amps, Tn=None):
     """Fit A(t) = A0 * exp(-zeta * 2*pi / Tn * t)
     If Tn is None, fit exponent parameter directly as A0 * exp(-k t) and compute zeta from k and Tn supplied per-trial.
@@ -324,33 +398,99 @@ def fit_exponential_decay(peak_times, peak_amps, Tn=None):
     if Tn is not None and Tn>0:
         zeta = k * Tn / (2*np.pi)
     return {'A0': A0, 'k': k, 'zeta': zeta}
-
+```
+```{python}
+#| label: theoretical period
 def theoretical_period(L, g=9.81):
     return 2*np.pi*np.sqrt(L/g)
 ```
 
-## Part A — Short Pendulum (L ≈ 0.3 m)
+# Part A: Short Pendulum (L ≈ 0.3 m)
 
 **Instructions:** Place CSV files for Part A into `HW1_STUDENTID/Data/` with names like `partA_trial01.csv` ... `partA_trial10.csv`. The code cells below will loop through trials, compute descriptors, estimate period, fit damping, and summarize results.
 
+## Data Collection
+
 ```{python}
-# Part A analysis loop (short pendulum)
-L_short = 0.3  # meters (adjust if measured)
+#| echo: false
 file_pattern = os.path.join(DATA_DIR, 'partA_trial*.csv')
-print(file_pattern)
 files = sorted(glob.glob(file_pattern))
-print(f"Found {len(files)} files for Part A analysis.")
-results = []
+```
+
+## Statistical Analysis
+
+For part A, I collect 11 trails, For each trial, compute:
+• Mean (µ)
+• Variance (σ2)
+• Root Mean Square (RMS)
+• Skewness (γ1)
+• Kurtosis (γ2)
+
+List all Part A trials and compute descriptors, output as @tbl-part-a, for assuring the data consistence, exclude the begining and the ending data, only keep the middle (from t=500 to t=10000)
+```{python}
+#| label: tbl-part-a
+#| tbl-cap: Summary of Part A
+#| output: true
+#| echo: false
+#| 
+summary = []
 
 for fpath in files:
     df = load_trial_csv(fpath)
-    t = df['time'].values
     x = df['accel'].values
-    # basic plot
-    plt.figure(); plt.plot(t, x); plt.title(f'Raw accel: {os.path.basename(fpath)}'); plt.xlabel('time (s)'); plt.ylabel('accel (units)'); plt.tight_layout()
-    # descriptors
     desc = compute_descriptors(x)
-    # smoothing for peak detection (optional)
+    summary.append({
+        'file': os.path.basename(fpath),
+        **desc
+    })
+
+summary = pd.DataFrame(summary)
+summary
+```
+
+## Period Estimation
+    * Apply autocorrelation or peak-detection algorithms
+    * Report mean period and standard deviation across trials: $\overline{T_n} = T_n \pm \sigma_T$
+    * Compare with theoretical prediction (@eq-simple-pendulum)
+
+Throught these below code, we candetect the peak and We can obtain the time difference between two points before and after. We already get the each period, and then just need compute the mean period and standard deviation as shown in @tbl-mean-period-std-a.
+
+```{python}
+#| label: fig-overview-a
+#| fig-cap: "Data overview of part A"
+#| echo: false
+L_short = 0.3  # meters (adjust if measured)
+# print(f"Found {len(files)} files for Part A analysis.")
+results = []
+
+# Create a 2x5 subplot grid for all trials
+fig, axes = plt.subplots(2, 5, figsize=(20, 8))
+axes = axes.ravel()  # flatten axes array for easier indexing
+
+for idx, fpath in enumerate(files):
+    if idx >= 10:  # limit to 10 figures
+        break
+
+    df_A = load_trial_csv(fpath)
+    t = df_A['time'].values
+    x = df_A['accel'].values
+    
+    # Plot in the corresponding subplot
+    ax = axes[idx]
+    ax.plot(t, x, 'b-', alpha=0.7)
+    ax.set_title(f'Trial {idx+1}: {os.path.basename(fpath)}')
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Accel (units)')
+    ax.grid(True)
+plt.show()
+```
+Compute the mean period and standard deviation as shown in @tbl-mean-period-std-a.
+```{python}
+#| label: tbl-mean-period-std-a
+#| tbl-cap: Part A analysis loop (short pendulum)
+#| echo: false
+for idx, fpath in enumerate(files):
+    # Continue with analysis (not shown in plot)
     x_smooth = signal.savgol_filter(x, 11, 3)
     periods, peaks = estimate_period_via_peaks(t, x_smooth, prominence=np.std(x_smooth)*0.5)
     if isinstance(periods, np.ndarray):
@@ -378,13 +518,40 @@ results_df = pd.DataFrame(results)
 results_df
 ```
 
+The theoretical can easily compute as following via @eq-simple-pendulum:
+$$
+\begin{align}
+T_{n}&=2\pi\sqrt{\frac{L}{g}} \\
+&= 2\pi\sqrt{\frac{0.32}{9.81}} \\
+&= 1.35 (s)
+\end{align}
+$$
+
 ```{python}
-# Create subplots for comparison
+#| echo: false
+
+theoretical_period_a = 1.1348
+mean_period_a = float(np.round(results_df['mean_period'].mean(),4))
+std_period_a = float(np.round(results_df['mean_period'].std(ddof=1),4))
+diff_period_a = float(np.round(theoretical_period_a-mean_period_a,4))
+# print(f"Mean period: {mean_period:.4f} s, Std: {std_period:.4f} s")
+```
+
+The 10 trials mean period is `{python} mean_period_a` s, and the standard deviation of mean period is `{python} std_period_a` s.
+
+Compare with theoretical, the diffirence is `{python} diff_period_a`. 
+
+
+## Damping Analysis
+Using the last trial as example, We can use images to further reveal the characteristics of the data. @fig-simple-pendulum-analysis-1
+```{python}
+#| label: fig-simple-pendulum-analysis
+#| fig-cap: Create subplots for comparison
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
 
 # Plot 1: Raw vs Smoothed Signal
 ax1.plot(t, x, 'b-', alpha=0.5, label='Raw')
-ax1.plot(t, x_smooth, 'r-', label='Smoothed')
+ax1.plot(t, x_smooth, 'r-', alpha=0.5, label='Smoothed')
 ax1.set_title('Signal Comparison')
 ax1.set_xlabel('Time (s)')
 ax1.set_ylabel('Acceleration')
@@ -405,7 +572,7 @@ ax2.legend()
 if isinstance(periods, np.ndarray) and len(periods) > 0:
     ax3.plot(periods, 'g.-')
     ax3.axhline(y=np.mean(periods), color='r', linestyle='--', 
-                label=f'Mean: {np.mean(periods):.3f}s')
+                label=f'Mean: {np.mean(periods):.4f}s')
     ax3.set_title('Period Variation')
     ax3.set_xlabel('Peak Index')
     ax3.set_ylabel('Period (s)')
@@ -425,11 +592,23 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Part B — Long Pendulum (L ≈ 1.0 m)
+## Discussion
+
+
+# Part B: Long Pendulum (L ≈ 1.0 m)
 
 Repeat analysis from Part A for `partB_trialXX.csv` files. Adjust `L_long` below if your measured length differs.
 
+## Statistical Analysis
+
+## Damping Analysis
+
+## Discussion
+
+## Comparative Study
+
 ```{python}
+#| label: Part B long Pendulum
 L_long = 1.0
 file_pattern = os.path.join(DATA_DIR, 'partB_trial*.csv')
 files = sorted(glob.glob(file_pattern))
@@ -464,9 +643,14 @@ for fpath in files:
 pd.DataFrame(results_B)
 ```
 
-## Part C — Nonlinear Regime (Large Angles)
+# Part C: Nonlinear Regime (Large Angles)
 
 Use `partC_trialXX.csv`. For large angle trials (θ0 > 45°), measure period variation vs amplitude and compare with small-angle theory.
+
+## Period Analysis
+
+## Comparison and Discussion
+
 
 ```{python}
 file_pattern = os.path.join(DATA_DIR, 'partC_trial*.csv')
@@ -485,11 +669,17 @@ for fpath in files:
 pd.DataFrame(period_vs_amp)
 ```
 
-## Part D — Noise Discussion
+# Part D: Noise Discussion
 
 Visually inspect signals and write your qualitative assessment here. Use the examples shown in previous plots. Answer: What are possible noise sources? How do they affect period/damping estimation?
 
-## Submission Checklist
+## Qualitative Noise Observation
+
+### Discussion
+
+
+
+# Submission Checklist
 
 - [ ] Export this notebook to PDF: `HW1_{STUDENT_ID}.pdf` (max 20 A4 pages)
 - [ ] Create ZIP named `HW1_{STUDENT_ID}.zip` containing:
@@ -500,7 +690,7 @@ Visually inspect signals and write your qualitative assessment here. Use the exa
 - [ ] Confirm all equations and figures are numbered and captioned
 - [ ] Ensure reproducibility: all code cells run from top to bottom without manual path edits (except `STUDENT_ID`)
 
-**Good luck!**
+
 
 ```{python}
 # Helper: save summary tables and figures
