@@ -449,9 +449,9 @@ summary
 ```
 
 ## Period Estimation
-    * Apply autocorrelation or peak-detection algorithms
-    * Report mean period and standard deviation across trials: $\overline{T_n} = T_n \pm \sigma_T$
-    * Compare with theoretical prediction (@eq-simple-pendulum)
+> * Apply autocorrelation or peak-detection algorithms
+> * Report mean period and standard deviation across trials: $\overline{T_n} = T_n \pm \sigma_T$
+> * Compare with theoretical prediction (@eq-simple-pendulum)
 
 Throught these below code, we candetect the peak and We can obtain the time difference between two points before and after. We already get the each period, and then just need compute the mean period and standard deviation as shown in @tbl-mean-period-std-a.
 
@@ -523,12 +523,13 @@ $$
 \begin{align}
 T_{n}&=2\pi\sqrt{\frac{L}{g}} \\
 &= 2\pi\sqrt{\frac{0.32}{9.81}} \\
-&= 1.35 (s)
+&= 1.135 (s)
 \end{align}
 $$
 
 ```{python}
 #| echo: false
+#| label: compare-part-a
 
 theoretical_period_a = 1.1348
 mean_period_a = float(np.round(results_df['mean_period'].mean(),4))
@@ -590,6 +591,61 @@ if len(peak_times) > 0:
 
 plt.tight_layout()
 plt.show()
+```
+**Important Tip:** We cannon get the pricise amplitudes, because the values we recorded are accelerator number.
+TODO: mybe we can use the accelerator inversely calculate the amplitude, but this exce the scope of this assignment.
+
+```{python}
+#| label: fig-peak-amplitudes-part-a
+#| fig-cap: "Peak amplitudes over time for 10 trials (Part A)"
+fig, ax = plt.subplots(figsize=(12, 6))
+for idx, fpath in enumerate(files[:10]):
+    df = load_trial_csv(fpath)
+    t = df['time'].values
+    x = df['accel'].values
+    x_smooth = signal.savgol_filter(x, 11, 3)
+    periods, peaks = estimate_period_via_peaks(t, x_smooth, prominence=np.std(x_smooth)*0.5)
+    if len(peaks) > 0:
+        peak_times = t[peaks]
+        peak_amps = np.abs(x_smooth[peaks])
+        ax.plot(peak_times, peak_amps/0.31656, marker='o', linestyle='-', label=f'Trial {idx+1}', alpha=0.7)
+
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Peak Amplitude')
+ax.set_title('Peak Amplitudes Over Time (10 Trials, Part A)')
+ax.grid(True)
+ax.set_ylim(bottom=0)
+ax.legend(loc='upper right', ncol=2, fontsize='small')
+plt.tight_layout()
+plt.show()
+```
+
+As shown in the @fig-peak-amplitudes-part-a, the amplitudes have respectively difference, due to the 
+
+TODO: analyze the difference
+
+# Fit exponential decay to all 10 trials and report mean/std of damping ratio ζ
+
+```{python}
+zeta_list = []
+for idx, fpath in enumerate(files[:10]):
+    df = load_trial_csv(fpath)
+    t = df['time'].values
+    x = df['accel'].values
+    x_smooth = signal.savgol_filter(x, 11, 3)
+    periods, peaks = estimate_period_via_peaks(t, x_smooth, prominence=np.std(x_smooth)*0.5)
+    if isinstance(periods, np.ndarray) and len(peaks) > 1:
+        peak_times = t[peaks]
+        peak_amps = np.abs(x_smooth[peaks])
+        mean_period = np.mean(periods)
+        decay = fit_exponential_decay(peak_times, peak_amps, Tn=mean_period)
+        zeta_list.append(decay['zeta'])
+
+zeta_arr = np.array(zeta_list)
+mean_zeta = np.nanmean(zeta_arr)
+std_zeta = np.nanstd(zeta_arr, ddof=1)
+
+print(f"Mean damping ratio ζ: {mean_zeta:.4f} ± {std_zeta:.4f}")
 ```
 
 ## Discussion
@@ -702,3 +758,50 @@ if 'results_B' in globals():
 print('Saved summary CSVs to', BASE_DIR)
 ```
 
+# Reproduce Guide
+## How to Reproduce This Analysis
+
+1. **Install Required Software**
+    - Install [Python 3.8+](https://www.python.org/downloads/).
+    - Install [Quarto](https://quarto.org/docs/get-started/).
+    - (Optional) Install [JupyterLab](https://jupyter.org/) for interactive editing.
+
+2. **Set Up the Environment**
+    - Open a terminal in the project root folder.
+    - (Recommended) Create a virtual environment:
+      ```
+      python -m venv .venv
+      source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+      ```
+    - Install dependencies:
+      ```
+      pip install -r requirements.txt
+      ```
+
+3. **Prepare Data**
+    - Place your raw data CSV files in the `Data/` folder as described in the instructions.
+    - Ensure filenames match the expected patterns (e.g., `partA_trial01.csv`).
+
+4. **Edit Metadata**
+    - Open `HW1_STUDENTID.qmd` and set your `STUDENT_ID`, name, and date at the top.
+
+5. **Render the Report**
+    - To render as HTML:
+      ```
+      quarto render HW1_STUDENTID.qmd --to html
+      ```
+    - To render as PDF (requires a LaTeX installation):
+      ```
+      quarto render HW1_STUDENTID.qmd --to pdf
+      ```
+
+6. **Troubleshooting**
+    - If you encounter missing package errors, install them with `pip install <package>`.
+    - Ensure all code cells run from top to bottom without manual edits except for `STUDENT_ID`.
+
+7. **Export and Submit**
+    - Export the rendered PDF and required files as described in the submission checklist.
+
+**Tip:** For interactive exploration, you can open the `.qmd` file in JupyterLab or VS Code with the Quarto extension.
+
+**Contact:** If you have issues reproducing the results, check your Python/Quarto versions and data file structure.
