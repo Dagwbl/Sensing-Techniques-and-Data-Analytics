@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -152,28 +117,35 @@ window.Quarto = {
   <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis"><span class="header-section-number">3.2</span> Statistical Analysis</a></li>
   <li><a href="#period-estimation" id="toc-period-estimation" class="nav-link" data-scroll-target="#period-estimation"><span class="header-section-number">3.3</span> Period Estimation</a></li>
   <li><a href="#damping-analysis" id="toc-damping-analysis" class="nav-link" data-scroll-target="#damping-analysis"><span class="header-section-number">3.4</span> Damping Analysis</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">3.5</span> Discussion</a></li>
   </ul></li>
-  <li><a href="#part-b-long-pendulum-l-1.0-m" id="toc-part-b-long-pendulum-l-1.0-m" class="nav-link" data-scroll-target="#part-b-long-pendulum-l-1.0-m"><span class="header-section-number">4</span> Part B: Long Pendulum (L ≈ 1.0 m)</a>
+  <li><a href="#fit-exponential-decay-to-all-10-trials-and-report-meanstd-of-damping-ratio-ζ" id="toc-fit-exponential-decay-to-all-10-trials-and-report-meanstd-of-damping-ratio-ζ" class="nav-link" data-scroll-target="#fit-exponential-decay-to-all-10-trials-and-report-meanstd-of-damping-ratio-ζ"><span class="header-section-number">4</span> Fit exponential decay to all 10 trials and report mean/std of damping ratio ζ</a>
   <ul class="collapse">
-  <li><a href="#statistical-analysis-1" id="toc-statistical-analysis-1" class="nav-link" data-scroll-target="#statistical-analysis-1"><span class="header-section-number">4.1</span> Statistical Analysis</a></li>
-  <li><a href="#damping-analysis-1" id="toc-damping-analysis-1" class="nav-link" data-scroll-target="#damping-analysis-1"><span class="header-section-number">4.2</span> Damping Analysis</a></li>
-  <li><a href="#discussion-1" id="toc-discussion-1" class="nav-link" data-scroll-target="#discussion-1"><span class="header-section-number">4.3</span> Discussion</a></li>
-  <li><a href="#comparative-study" id="toc-comparative-study" class="nav-link" data-scroll-target="#comparative-study"><span class="header-section-number">4.4</span> Comparative Study</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">4.1</span> Discussion</a></li>
   </ul></li>
-  <li><a href="#part-c-nonlinear-regime-large-angles" id="toc-part-c-nonlinear-regime-large-angles" class="nav-link" data-scroll-target="#part-c-nonlinear-regime-large-angles"><span class="header-section-number">5</span> Part C: Nonlinear Regime (Large Angles)</a>
+  <li><a href="#part-b-long-pendulum-l-1.0-m" id="toc-part-b-long-pendulum-l-1.0-m" class="nav-link" data-scroll-target="#part-b-long-pendulum-l-1.0-m"><span class="header-section-number">5</span> Part B: Long Pendulum (L ≈ 1.0 m)</a>
   <ul class="collapse">
-  <li><a href="#period-analysis" id="toc-period-analysis" class="nav-link" data-scroll-target="#period-analysis"><span class="header-section-number">5.1</span> Period Analysis</a></li>
-  <li><a href="#comparison-and-discussion" id="toc-comparison-and-discussion" class="nav-link" data-scroll-target="#comparison-and-discussion"><span class="header-section-number">5.2</span> Comparison and Discussion</a></li>
+  <li><a href="#statistical-analysis-1" id="toc-statistical-analysis-1" class="nav-link" data-scroll-target="#statistical-analysis-1"><span class="header-section-number">5.1</span> Statistical Analysis</a></li>
+  <li><a href="#damping-analysis-1" id="toc-damping-analysis-1" class="nav-link" data-scroll-target="#damping-analysis-1"><span class="header-section-number">5.2</span> Damping Analysis</a></li>
+  <li><a href="#discussion-1" id="toc-discussion-1" class="nav-link" data-scroll-target="#discussion-1"><span class="header-section-number">5.3</span> Discussion</a></li>
+  <li><a href="#comparative-study" id="toc-comparative-study" class="nav-link" data-scroll-target="#comparative-study"><span class="header-section-number">5.4</span> Comparative Study</a></li>
   </ul></li>
-  <li><a href="#part-d-noise-discussion" id="toc-part-d-noise-discussion" class="nav-link" data-scroll-target="#part-d-noise-discussion"><span class="header-section-number">6</span> Part D: Noise Discussion</a>
+  <li><a href="#part-c-nonlinear-regime-large-angles" id="toc-part-c-nonlinear-regime-large-angles" class="nav-link" data-scroll-target="#part-c-nonlinear-regime-large-angles"><span class="header-section-number">6</span> Part C: Nonlinear Regime (Large Angles)</a>
   <ul class="collapse">
-  <li><a href="#qualitative-noise-observation" id="toc-qualitative-noise-observation" class="nav-link" data-scroll-target="#qualitative-noise-observation"><span class="header-section-number">6.1</span> Qualitative Noise Observation</a>
+  <li><a href="#period-analysis" id="toc-period-analysis" class="nav-link" data-scroll-target="#period-analysis"><span class="header-section-number">6.1</span> Period Analysis</a></li>
+  <li><a href="#comparison-and-discussion" id="toc-comparison-and-discussion" class="nav-link" data-scroll-target="#comparison-and-discussion"><span class="header-section-number">6.2</span> Comparison and Discussion</a></li>
+  </ul></li>
+  <li><a href="#part-d-noise-discussion" id="toc-part-d-noise-discussion" class="nav-link" data-scroll-target="#part-d-noise-discussion"><span class="header-section-number">7</span> Part D: Noise Discussion</a>
   <ul class="collapse">
-  <li><a href="#discussion-2" id="toc-discussion-2" class="nav-link" data-scroll-target="#discussion-2"><span class="header-section-number">6.1.1</span> Discussion</a></li>
+  <li><a href="#qualitative-noise-observation" id="toc-qualitative-noise-observation" class="nav-link" data-scroll-target="#qualitative-noise-observation"><span class="header-section-number">7.1</span> Qualitative Noise Observation</a>
+  <ul class="collapse">
+  <li><a href="#discussion-2" id="toc-discussion-2" class="nav-link" data-scroll-target="#discussion-2"><span class="header-section-number">7.1.1</span> Discussion</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist"><span class="header-section-number">7</span> Submission Checklist</a></li>
+  <li><a href="#submission-checklist" id="toc-submission-checklist" class="nav-link" data-scroll-target="#submission-checklist"><span class="header-section-number">8</span> Submission Checklist</a></li>
+  <li><a href="#reproduce-guide" id="toc-reproduce-guide" class="nav-link" data-scroll-target="#reproduce-guide"><span class="header-section-number">9</span> Reproduce Guide</a>
+  <ul class="collapse">
+  <li><a href="#how-to-reproduce-this-analysis" id="toc-how-to-reproduce-this-analysis" class="nav-link" data-scroll-target="#how-to-reproduce-this-analysis"><span class="header-section-number">9.1</span> How to Reproduce This Analysis</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="HW1_STUDENTID.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -226,29 +198,6 @@ window.Quarto = {
 <li>Submission checklist</li>
 </ol>
 <p>Each analysis part includes: data loading, visualization, statistical descriptors, period estimation, damping estimation, and discussion cells.</p>
-<div id="imports-and-settings" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> glob</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.signal <span class="im">as</span> signal</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.optimize <span class="im">as</span> optimize</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> skew, kurtosis</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure figures render in notebook</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproducible plotting size policy</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">4</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Paths (edit STUDENT_ID below)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>STUDENT_ID <span class="op">=</span> <span class="st">"STUDENT_ID"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>BASE_DIR <span class="op">=</span> <span class="ss">f"."</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>DATA_DIR <span class="op">=</span> os.path.join(BASE_DIR, <span class="st">'Data'</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>FIG_DIR <span class="op">=</span> os.path.join(BASE_DIR, <span class="st">'Figures'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
 </section>
 <section id="experiment-preparation" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="experiment-preparation"><span class="header-section-number">1.2</span> Experiment Preparation</h2>
@@ -292,59 +241,11 @@ T_{n}=2\pi\sqrt{\frac{L}{g}}
 <li><span class="math inline">L</span> = pendulum length (meters)</li>
 <li><span class="math inline">g</span> = gravitational acceleration (<span class="math inline">9.81, m/s^2</span>)</li>
 </ul>
-<p>::: {#cell-Theoretical data for comparison .cell execution_count=2}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_theoretical_pendulum(L, t_max<span class="op">=</span><span class="dv">10</span>, dt<span class="op">=</span><span class="fl">0.01</span>, theta0<span class="op">=</span><span class="dv">15</span>, g<span class="op">=</span><span class="fl">9.81</span>):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate theoretical pendulum motion for small angles</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">        L (float): pendulum length in meters</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">        t_max (float): simulation duration in seconds</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">        dt (float): time step in seconds</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">        theta0 (float): initial angle in radians</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">        g (float): gravitational acceleration (m/s^2)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">        t, theta: time and angle arrays</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>, t_max, dt)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    omega <span class="op">=</span> np.sqrt(g<span class="op">/</span>L)  <span class="co"># natural frequency</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    theta <span class="op">=</span> theta0 <span class="op">*</span> np.cos(omega <span class="op">*</span> t)  <span class="co"># solution for small angles</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, theta</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> theoretical_period(L, g<span class="op">=</span><span class="fl">9.81</span>):</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Calculate theoretical period of a simple pendulum"""</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(L <span class="op">/</span> g)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate and plot theoretical data for both pendulum lengths</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Short pendulum</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>L_short <span class="op">=</span> <span class="fl">0.3</span> <span class="co"># part A</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>t_short, theta_short <span class="op">=</span> generate_theoretical_pendulum(L_short)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>T_short <span class="op">=</span> theoretical_period(L_short)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>ax1.plot(t_short, theta_short, <span class="st">'b-'</span>, label<span class="op">=</span><span class="ss">f'Theory (T=</span><span class="sc">{</span>T_short<span class="sc">:.3f}</span><span class="ss">s)'</span>)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="ss">f'Short Pendulum (L=</span><span class="sc">{</span>L_short<span class="sc">}</span><span class="ss">m)'</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Angle (rad)'</span>)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>ax1.legend()</span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Long pendulum</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>L_long <span class="op">=</span> <span class="fl">1.0</span> <span class="co"># part B</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>t_long, theta_long <span class="op">=</span> generate_theoretical_pendulum(L_long)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>T_long <span class="op">=</span> theoretical_period(L_long)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>ax2.plot(t_long, theta_long, <span class="st">'r-'</span>, label<span class="op">=</span><span class="ss">f'Theory (T=</span><span class="sc">{</span>T_long<span class="sc">:.3f}</span><span class="ss">s)'</span>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="ss">f'Long Pendulum (L=</span><span class="sc">{</span>L_long<span class="sc">}</span><span class="ss">m)'</span>)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Angle (rad)'</span>)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>ax2.grid(<span class="va">True</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>ax2.legend()</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Theoretical periods:</span><span class="ch">\n</span><span class="ss">Short pendulum: </span><span class="sc">{</span>T_short<span class="sc">:.3f}</span><span class="ss">s</span><span class="ch">\n</span><span class="ss">Long pendulum: </span><span class="sc">{</span>T_long<span class="sc">:.3f}</span><span class="ss">s'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-theoretical-data-for-comparison" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HW1_STUDENTID_files/figure-html/theoretical-data-for-comparison-output-1.png" id="theoretical-data-for-comparison" width="1141" height="372" class="figure-img"></p>
+<p><img src="HW1_STUDENTID_files/figure-html/theoretical-data-for-comparison-output-1.png" id="theoretical-data-for-comparison" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -353,7 +254,7 @@ T_{n}=2\pi\sqrt{\frac{L}{g}}
 Short pendulum: 1.099s
 Long pendulum: 2.006s</code></pre>
 </div>
-<p>:::</p>
+</div>
 </section>
 <section id="damped-oscillation-model" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="damped-oscillation-model"><span class="header-section-number">1.3.2</span> Damped Oscillation Model</h3>
@@ -367,125 +268,26 @@ A(t)=A_{0} \exp(-\zeta\frac{2\pi}{T_{n}}t)
 <li><span class="math inline">\zeta</span> = damping ratio (dimensionless)</li>
 <li><span class="math inline">t</span> = elapsed time (seconds)</li>
 </ul>
-<p>::: {#cell-Damped Oscillation .cell execution_count=3}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_damped_pendulum(L, t_max<span class="op">=</span><span class="dv">10</span>, dt<span class="op">=</span><span class="fl">0.01</span>, theta0<span class="op">=</span><span class="dv">15</span>, zeta<span class="op">=</span><span class="fl">0.1</span>, g<span class="op">=</span><span class="fl">9.81</span>):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate damped pendulum motion</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">        L (float): pendulum length in meters</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">        t_max (float): simulation duration in seconds</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">        dt (float): time step in seconds</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">        theta0 (float): initial angle in radians</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">        zeta (float): damping ratio (dimensionless)</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">        g (float): gravitational acceleration (m/s^2)</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">        t, theta: time and angle arrays</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(<span class="dv">0</span>, t_max, dt)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    omega <span class="op">=</span> np.sqrt(g<span class="op">/</span>L)  <span class="co"># natural frequency</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Damped solution</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    theta <span class="op">=</span> theta0 <span class="op">*</span> np.exp(<span class="op">-</span>zeta <span class="op">*</span> omega <span class="op">*</span> t) <span class="op">*</span> np.cos(omega <span class="op">*</span> t)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, theta</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot comparison of ideal vs damped oscillation</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Short pendulum comparison</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>t_short_damped, theta_short_damped <span class="op">=</span> generate_damped_pendulum(L_short, zeta<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax1.plot(t_short, theta_short, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Ideal'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax1.plot(t_short_damped, theta_short_damped, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Damped (ζ=0.1)'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="ss">f'Short Pendulum (L=</span><span class="sc">{</span>L_short<span class="sc">}</span><span class="ss">m)'</span>)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Angle (rad)'</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Long pendulum comparison</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>t_long_damped, theta_long_damped <span class="op">=</span> generate_damped_pendulum(L_long, zeta<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>ax2.plot(t_long, theta_long, <span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Ideal'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>ax2.plot(t_long_damped, theta_long_damped, <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Damped (ζ=0.1)'</span>)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="ss">f'Long Pendulum (L=</span><span class="sc">{</span>L_long<span class="sc">}</span><span class="ss">m)'</span>)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Angle (rad)'</span>)</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>ax2.grid(<span class="va">True</span>)</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the +- A_0 exp(-zeta 2pi/T_n t) lines</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, t, theta0, Tn <span class="kw">in</span> [</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    (ax1, t_short_damped, <span class="dv">15</span>, theoretical_period(L_short)),</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    (ax2, t_long_damped, <span class="dv">15</span>, theoretical_period(L_long))</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>]:</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    envelope <span class="op">=</span> theta0 <span class="op">*</span> np.exp(<span class="op">-</span><span class="fl">0.1</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">/</span> Tn <span class="op">*</span> t)</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    ax.plot(t, envelope, <span class="st">'k:'</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="op">+</span><span class="vs">A_0 e</span><span class="dv">^</span><span class="vs">{-</span><span class="er">\</span><span class="vs">zeta 2</span><span class="er">\</span><span class="vs">pi/T_n t}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>    ax.plot(t, <span class="op">-</span>envelope, <span class="st">'k:'</span>, label<span class="op">=</span><span class="vs">r'</span><span class="dv">$</span><span class="vs">-A_0 e</span><span class="dv">^</span><span class="vs">{-</span><span class="er">\</span><span class="vs">zeta 2</span><span class="er">\</span><span class="vs">pi/T_n t}</span><span class="dv">$</span><span class="vs">'</span>)</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>ax1.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>ax2.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-damped-oscillation" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="HW1_STUDENTID_files/figure-html/damped-oscillation-output-1.png" id="damped-oscillation" width="1141" height="564" class="figure-img"></p>
+<p><img src="HW1_STUDENTID_files/figure-html/damped-oscillation-output-1.png" id="damped-oscillation" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
-<p>:::</p>
+</div>
 </section>
 </section>
 </section>
 <section id="data-preprocessing" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Data Preprocessing</h1>
-<div id="load_trial_csv" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_trial_csv(path,start<span class="op">=</span><span class="dv">500</span>,end<span class="op">=</span><span class="dv">10000</span>):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Load CSV exported from PhyPhox. </span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes time column 'time' (s) and acceleration axis 'accel' aligned with swing direction.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Adjust column names below if your CSV uses different headers."""</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(path)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    time_col <span class="op">=</span> df.columns[<span class="dv">0</span>]</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># choose accel axis heuristically</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    accel_col <span class="op">=</span> df.columns[<span class="dv">2</span>]</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns<span class="op">=</span>{time_col: <span class="st">'time'</span>, accel_col: <span class="st">'accel'</span>})</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df[[<span class="st">'time'</span>,<span class="st">'accel'</span>]].iloc[start:end]  <span class="co"># trim start/end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>The data has been processed as follows: 1. Data slices, becuse the beginning and the end of the data contain external forces that manually interfered, only the middle data is taken(t from 500 to 5000). 2. 还原振幅，由于手机传感器只记录了加速度数据，并没有记录振幅，采用 <a href="#eq-compute-amplitude" class="quarto-xref">Equation&nbsp;2.1</a> 近似还原峰值振幅。 <span id="eq-compute-amplitude"><span class="math display">
+   A=\frac {​∣apeak​∣} ​{ω_0^2}
+    \tag{2.1}</span></span></p>
 <section id="peak-detection-algorithms" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="peak-detection-algorithms"><span class="header-section-number">2.1</span> Peak-detection algorithms</h2>
-<p>The estimate_period_via_peaks function is designed to estimate the periods of oscillatory signals by identifying the time intervals between successive peaks in the data. It uses the find_peaks method from the scipy.signal module to locate prominent peaks in the signal, then calculates the time differences between these peaks to determine the periods. This approach is commonly used for analyzing periodic signals, such as those from pendulum or vibration experiments.</p>
-<p>Key points:</p>
-<p>Inputs: time: Array of time values. signal_data: Array of signal measurements (e.g., acceleration). prominence and distance: Parameters to control peak detection sensitivity. Outputs: periods: Array of estimated periods (time differences between peaks). peaks: Indices of detected peaks. This function is useful for extracting the fundamental period of a signal in experimental data analysis.</p>
-<div id="estimate-period-via-peaks" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_period_via_peaks(time, signal_data, prominence<span class="op">=</span><span class="fl">0.5</span>, distance<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># find peaks (positive swings)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    peaks, props <span class="op">=</span> signal.find_peaks(signal_data, prominence<span class="op">=</span>prominence, distance<span class="op">=</span>distance)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(peaks) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.nan, peaks</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    peak_times <span class="op">=</span> time[peaks]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    periods <span class="op">=</span> np.diff(peak_times)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> periods, peaks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="fit-exponential-decay" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_exponential_decay(peak_times, peak_amps, Tn<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fit A(t) = A0 * exp(-zeta * 2*pi / Tn * t)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    If Tn is None, fit exponent parameter directly as A0 * exp(-k t) and compute zeta from k and Tn supplied per-trial.</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns dict with A0, zeta (if possible), k (decay rate), covariance.</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit ln(A) = ln(A0) - k t  where k = zeta * 2*pi / Tn</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    positive_mask <span class="op">=</span> peak_amps <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.array(peak_times)[positive_mask]</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> np.array(peak_amps)[positive_mask]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(A) <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">'A0'</span>: np.nan, <span class="st">'k'</span>: np.nan, <span class="st">'zeta'</span>: np.nan}</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    logA <span class="op">=</span> np.log(A)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    coef <span class="op">=</span> np.polyfit(t, logA, <span class="dv">1</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="op">-</span>coef[<span class="dv">0</span>]  <span class="co"># because logA = ln(A0) - k t</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    A0 <span class="op">=</span> np.exp(coef[<span class="dv">1</span>])</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    zeta <span class="op">=</span> np.nan</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> Tn <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> Tn<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        zeta <span class="op">=</span> k <span class="op">*</span> Tn <span class="op">/</span> (<span class="dv">2</span><span class="op">*</span>np.pi)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'A0'</span>: A0, <span class="st">'k'</span>: k, <span class="st">'zeta'</span>: zeta}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="theoretical-period" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> theoretical_period(L, g<span class="op">=</span><span class="fl">9.81</span>):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>np.sqrt(L<span class="op">/</span>g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>In order to estimate the periods of oscillatory signals by identifying the time intervals between successive peaks in the data. It uses the find_peaks method from the scipy.signal module to locate prominent peaks in the signal, then calculates the time differences between these peaks to determine the periods. This approach is commonly used for analyzing periodic signals, such as those from pendulum or vibration experiments.</p>
 </section>
 </section>
 <section id="part-a-short-pendulum-l-0.3-m" class="level1" data-number="3">
@@ -505,7 +307,7 @@ A(t)=A_{0} \exp(-\zeta\frac{2\pi}{T_{n}}t)
 Table&nbsp;3.1: Summary of Part A
 </figcaption>
 <div aria-describedby="tbl-part-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
@@ -525,92 +327,92 @@ Table&nbsp;3.1: Summary of Part A
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>partA_trial01.csv</td>
-<td>-0.024352</td>
-<td>1.334183</td>
-<td>1.155264</td>
-<td>-0.003669</td>
-<td>1.513622</td>
+<td>-0.031248</td>
+<td>1.460237</td>
+<td>1.208673</td>
+<td>0.003428</td>
+<td>1.502500</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>partA_trial02.csv</td>
-<td>-0.027097</td>
-<td>1.109700</td>
-<td>1.053716</td>
-<td>-0.005063</td>
-<td>1.514776</td>
+<td>-0.033971</td>
+<td>1.216545</td>
+<td>1.103372</td>
+<td>0.002148</td>
+<td>1.503270</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>partA_trial03.csv</td>
-<td>-0.022610</td>
-<td>1.665985</td>
-<td>1.290860</td>
-<td>-0.002422</td>
-<td>1.512273</td>
+<td>-0.029070</td>
+<td>1.826324</td>
+<td>1.351578</td>
+<td>0.003034</td>
+<td>1.499298</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>partA_trial04.csv</td>
-<td>-0.006346</td>
-<td>2.023282</td>
-<td>1.422360</td>
-<td>-0.026755</td>
-<td>1.507332</td>
+<td>-0.016384</td>
+<td>2.177979</td>
+<td>1.475725</td>
+<td>-0.022033</td>
+<td>1.501755</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>partA_trial05.csv</td>
-<td>-0.012029</td>
-<td>2.386752</td>
-<td>1.544877</td>
-<td>-0.014723</td>
-<td>1.506206</td>
+<td>-0.022330</td>
+<td>2.566484</td>
+<td>1.602003</td>
+<td>-0.009395</td>
+<td>1.501239</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>partA_trial06.csv</td>
-<td>0.000310</td>
-<td>2.444235</td>
-<td>1.563323</td>
-<td>-0.026773</td>
-<td>1.507721</td>
+<td>0.010666</td>
+<td>2.639334</td>
+<td>1.624457</td>
+<td>-0.041130</td>
+<td>1.501994</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>partA_trial07.csv</td>
-<td>-0.009750</td>
-<td>2.326952</td>
-<td>1.525386</td>
-<td>-0.023197</td>
-<td>1.507793</td>
+<td>-0.019840</td>
+<td>2.510376</td>
+<td>1.584365</td>
+<td>-0.016823</td>
+<td>1.501276</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>partA_trial08.csv</td>
-<td>-0.011337</td>
-<td>1.915803</td>
-<td>1.384099</td>
-<td>-0.018471</td>
-<td>1.506912</td>
+<td>-0.013571</td>
+<td>2.077988</td>
+<td>1.441427</td>
+<td>-0.016308</td>
+<td>1.493407</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>partA_trial09.csv</td>
-<td>0.005203</td>
-<td>2.635221</td>
-<td>1.623259</td>
-<td>-0.032385</td>
-<td>1.507748</td>
+<td>0.014334</td>
+<td>2.851906</td>
+<td>1.688632</td>
+<td>-0.045974</td>
+<td>1.499840</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>partA_trial10.csv</td>
-<td>-0.014440</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.281020</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 </tbody>
 </table>
@@ -624,16 +426,20 @@ Table&nbsp;3.1: Summary of Part A
 </section>
 <section id="period-estimation" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="period-estimation"><span class="header-section-number">3.3</span> Period Estimation</h2>
-<pre><code>* Apply autocorrelation or peak-detection algorithms
-* Report mean period and standard deviation across trials: $\overline{T_n} = T_n \pm \sigma_T$
-* Compare with theoretical prediction (@eq-simple-pendulum)</code></pre>
+<blockquote class="blockquote">
+<ul>
+<li>Apply autocorrelation or peak-detection algorithms</li>
+<li>Report mean period and standard deviation across trials: <span class="math inline">\overline{T_n} = T_n \pm \sigma_T</span></li>
+<li>Compare with theoretical prediction (<a href="#eq-simple-pendulum" class="quarto-xref">Equation&nbsp;1.1</a>)</li>
+</ul>
+</blockquote>
 <p>Throught these below code, we candetect the peak and We can obtain the time difference between two points before and after. We already get the each period, and then just need compute the mean period and standard deviation as shown in <a href="#tbl-mean-period-std-a" class="quarto-xref">Table&nbsp;3.2</a>.</p>
 <div id="cell-fig-overview-a" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div id="fig-overview-a" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overview-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="HW1_STUDENTID_files/figure-html/fig-overview-a-output-1.png" width="1567" height="671" class="figure-img">
+<img src="HW1_STUDENTID_files/figure-html/fig-overview-a-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overview-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: Data overview of part A
@@ -650,7 +456,7 @@ Figure&nbsp;3.1: Data overview of part A
 Table&nbsp;3.2: Part A analysis loop (short pendulum)
 </figcaption>
 <div aria-describedby="tbl-mean-period-std-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -675,142 +481,142 @@ Table&nbsp;3.2: Part A analysis loop (short pendulum)
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>partA_trial01.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>partA_trial02.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>partA_trial03.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>partA_trial04.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>partA_trial05.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>partA_trial06.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>partA_trial07.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>partA_trial08.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>partA_trial09.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>partA_trial10.csv</td>
-<td>1.140544</td>
-<td>0.013974</td>
-<td>1.846905</td>
-<td>0.00312</td>
-<td>0.000566</td>
-<td>-0.01444</td>
-<td>1.509034</td>
-<td>1.228448</td>
-<td>-0.021802</td>
-<td>1.509295</td>
+<td>1.140433</td>
+<td>0.01504</td>
+<td>1.836229</td>
+<td>0.002628</td>
+<td>0.000477</td>
+<td>-0.008502</td>
+<td>1.641305</td>
+<td>1.28102</td>
+<td>-0.036492</td>
+<td>1.501158</td>
 </tr>
 </tbody>
 </table>
@@ -825,64 +631,21 @@ Table&nbsp;3.2: Part A analysis loop (short pendulum)
 \begin{align}
 T_{n}&amp;=2\pi\sqrt{\frac{L}{g}} \\
 &amp;= 2\pi\sqrt{\frac{0.32}{9.81}} \\
-&amp;= 1.35 (s)
+&amp;= 1.135 (s)
 \end{align}
 </span></p>
-<p>The 10 trials mean period is 1.1405 s, and the standard deviation of mean period is 0.0 s.</p>
-<p>Compare with theoretical, the diffirence is -0.0057.</p>
+<p>The 10 trials mean period is 1.1404 s, and the standard deviation of mean period is 0.0 s.</p>
+<p>Compare with theoretical, the diffirence is -0.0056.</p>
 </section>
 <section id="damping-analysis" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="damping-analysis"><span class="header-section-number">3.4</span> Damping Analysis</h2>
-<p>Using the last trial as example, We can use images to further reveal the characteristics of the data. <strong>?@fig-simple-pendulum-analysis-1</strong></p>
+<p>Using the last trial as example, We can use images to further reveal the characteristics of the data. <a href="#fig-simple-pendulum-analysis" class="quarto-xref">Figure&nbsp;3.2</a></p>
 <div id="cell-fig-simple-pendulum-analysis" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ((ax1, ax2), (ax3, ax4)) <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Raw vs Smoothed Signal</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ax1.plot(t, x, <span class="st">'b-'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'Raw'</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax1.plot(t, x_smooth, <span class="st">'r-'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="st">'Smoothed'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Signal Comparison'</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Acceleration'</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ax1.legend()</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Peak Detection</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>ax2.plot(t, x_smooth, <span class="st">'b-'</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(peaks) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    ax2.plot(t[peaks], x_smooth[peaks], <span class="st">'ro'</span>, label<span class="op">=</span><span class="st">'Peaks'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Peak Detection'</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">'Acceleration'</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>ax2.grid(<span class="va">True</span>)</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>ax2.legend()</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 3: Period Analysis</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">isinstance</span>(periods, np.ndarray) <span class="kw">and</span> <span class="bu">len</span>(periods) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    ax3.plot(periods, <span class="st">'g.-'</span>)</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    ax3.axhline(y<span class="op">=</span>np.mean(periods), color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, </span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Mean: </span><span class="sc">{</span>np<span class="sc">.</span>mean(periods)<span class="sc">:.4f}</span><span class="ss">s'</span>)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    ax3.set_title(<span class="st">'Period Variation'</span>)</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    ax3.set_xlabel(<span class="st">'Peak Index'</span>)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    ax3.set_ylabel(<span class="st">'Period (s)'</span>)</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    ax3.grid(<span class="va">True</span>)</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    ax3.legend()</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 4: Peak Amplitude Decay</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(peak_times) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    ax4.plot(peak_times, peak_amps, <span class="st">'b.'</span>, label<span class="op">=</span><span class="st">'Peak Amplitudes'</span>)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    ax4.set_title(<span class="st">'Amplitude Decay'</span>)</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    ax4.set_xlabel(<span class="st">'Time (s)'</span>)</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    ax4.set_ylabel(<span class="st">'Peak Amplitude'</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    ax4.grid(<span class="va">True</span>)</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    ax4.legend()</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="fig-simple-pendulum-analysis" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simple-pendulum-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="HW1_STUDENTID_files/figure-html/fig-simple-pendulum-analysis-output-1.png" width="1429" height="948" class="figure-img">
+<img src="HW1_STUDENTID_files/figure-html/fig-simple-pendulum-analysis-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simple-pendulum-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.2: Create subplots for comparison
@@ -891,59 +654,52 @@ Figure&nbsp;3.2: Create subplots for comparison
 </div>
 </div>
 </div>
+<p><strong>Important Tip:</strong> We cannon get the pricise amplitudes, because the values we recorded are accelerator number. TODO: mybe we can use the accelerator inversely calculate the amplitude, but this exce the scope of this assignment.</p>
+<div id="cell-fig-peak-amplitudes-part-a" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div id="fig-peak-amplitudes-part-a" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-peak-amplitudes-part-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="HW1_STUDENTID_files/figure-html/fig-peak-amplitudes-part-a-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-peak-amplitudes-part-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Peak amplitudes over time for 10 trials (Part A)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>As shown in the <a href="#fig-peak-amplitudes-part-a" class="quarto-xref">Figure&nbsp;3.3</a>, the amplitudes have respectively difference, due to the</p>
+<p>TODO: analyze the difference</p>
 </section>
-<section id="discussion" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">3.5</span> Discussion</h2>
+</section>
+<section id="fit-exponential-decay-to-all-10-trials-and-report-meanstd-of-damping-ratio-ζ" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Fit exponential decay to all 10 trials and report mean/std of damping ratio ζ</h1>
+<div id="844c4992" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean damping ratio ζ: 0.0005 ± 0.0001</code></pre>
+</div>
+</div>
+<section id="discussion" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">4.1</span> Discussion</h2>
 </section>
 </section>
-<section id="part-b-long-pendulum-l-1.0-m" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Part B: Long Pendulum (L ≈ 1.0 m)</h1>
+<section id="part-b-long-pendulum-l-1.0-m" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Part B: Long Pendulum (L ≈ 1.0 m)</h1>
 <p>Repeat analysis from Part A for <code>partB_trialXX.csv</code> files. Adjust <code>L_long</code> below if your measured length differs.</p>
-<section id="statistical-analysis-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="statistical-analysis-1"><span class="header-section-number">4.1</span> Statistical Analysis</h2>
+<section id="statistical-analysis-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="statistical-analysis-1"><span class="header-section-number">5.1</span> Statistical Analysis</h2>
 </section>
-<section id="damping-analysis-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="damping-analysis-1"><span class="header-section-number">4.2</span> Damping Analysis</h2>
+<section id="damping-analysis-1" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="damping-analysis-1"><span class="header-section-number">5.2</span> Damping Analysis</h2>
 </section>
-<section id="discussion-1" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="discussion-1"><span class="header-section-number">4.3</span> Discussion</h2>
+<section id="discussion-1" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="discussion-1"><span class="header-section-number">5.3</span> Discussion</h2>
 </section>
-<section id="comparative-study" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="comparative-study"><span class="header-section-number">4.4</span> Comparative Study</h2>
-<p>::: {#cell-Part B long Pendulum .cell execution_count=16}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>L_long <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>file_pattern <span class="op">=</span> os.path.join(DATA_DIR, <span class="st">'partB_trial*.csv'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(file_pattern))</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy-paste the same loop for Part B (or refactor into a function). For brevity we reuse code:</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>results_B <span class="op">=</span> []</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fpath <span class="kw">in</span> files:</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> load_trial_csv(fpath)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> df[<span class="st">'time'</span>].values</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> df[<span class="st">'accel'</span>].values</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    x_smooth <span class="op">=</span> signal.savgol_filter(x, <span class="dv">11</span>, <span class="dv">3</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    periods, peaks <span class="op">=</span> estimate_period_via_peaks(t, x_smooth, prominence<span class="op">=</span>np.std(x_smooth)<span class="op">*</span><span class="fl">0.5</span>)</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(periods, np.ndarray):</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        mean_period <span class="op">=</span> np.mean(periods)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        std_period <span class="op">=</span> np.std(periods, ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        mean_period <span class="op">=</span> np.nan</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        std_period <span class="op">=</span> np.nan</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    peak_times <span class="op">=</span> t[peaks] <span class="cf">if</span> <span class="bu">len</span>(peaks)<span class="op">&gt;</span><span class="dv">0</span> <span class="cf">else</span> np.array([])</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    peak_amps <span class="op">=</span> np.<span class="bu">abs</span>(x_smooth[peaks]) <span class="cf">if</span> <span class="bu">len</span>(peaks)<span class="op">&gt;</span><span class="dv">0</span> <span class="cf">else</span> np.array([])</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    decay <span class="op">=</span> fit_exponential_decay(peak_times, peak_amps, Tn<span class="op">=</span>mean_period)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    desc <span class="op">=</span> compute_descriptors(x)</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> {</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'file'</span>: os.path.basename(fpath),</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'mean_period'</span>: mean_period,</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'std_period'</span>: std_period,</span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'A0'</span>: decay[<span class="st">'A0'</span>],</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">'k'</span>: decay[<span class="st">'k'</span>],</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">'zeta'</span>: decay[<span class="st">'zeta'</span>],</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>desc</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    results_B.append(result)</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(results_B)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="part-b-long-pendulum" class="cell-output cell-output-display" data-execution_count="34">
+<section id="comparative-study" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="comparative-study"><span class="header-section-number">5.4</span> Comparative Study</h2>
+<div id="cell-part-b-long-pendulum" class="cell" data-execution_count="18">
+<div id="part-b-long-pendulum" class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
@@ -968,175 +724,161 @@ Figure&nbsp;3.2: Create subplots for comparison
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>partB_trial01.csv</td>
-<td>1.180521</td>
-<td>0.015039</td>
-<td>7.031579</td>
-<td>0.006889</td>
-<td>0.001294</td>
-<td>0.590250</td>
-<td>19.617887</td>
-<td>4.468134</td>
-<td>-0.204623</td>
-<td>1.512871</td>
+<td>1.188916</td>
+<td>0.011122</td>
+<td>7.095623</td>
+<td>0.007424</td>
+<td>0.001405</td>
+<td>0.746010</td>
+<td>23.264948</td>
+<td>4.880196</td>
+<td>-0.242933</td>
+<td>1.474280</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>partB_trial02.csv</td>
-<td>1.181938</td>
-<td>0.017244</td>
-<td>7.473388</td>
-<td>0.010552</td>
-<td>0.001985</td>
-<td>0.920292</td>
-<td>18.714991</td>
-<td>4.422664</td>
-<td>-0.312918</td>
-<td>1.629109</td>
+<td>1.195137</td>
+<td>0.013971</td>
+<td>7.805458</td>
+<td>0.013532</td>
+<td>0.002574</td>
+<td>1.123809</td>
+<td>23.672098</td>
+<td>4.992973</td>
+<td>-0.348289</td>
+<td>1.546736</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>partB_trial03.csv</td>
-<td>1.184906</td>
-<td>0.013286</td>
-<td>7.472619</td>
-<td>0.006202</td>
-<td>0.001170</td>
-<td>0.472986</td>
-<td>22.471936</td>
-<td>4.763747</td>
-<td>-0.138940</td>
-<td>1.478705</td>
+<td>1.193650</td>
+<td>0.013384</td>
+<td>7.612528</td>
+<td>0.007566</td>
+<td>0.001437</td>
+<td>0.534626</td>
+<td>26.321793</td>
+<td>5.157690</td>
+<td>-0.144810</td>
+<td>1.431565</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>partB_trial04.csv</td>
-<td>1.185939</td>
-<td>0.014329</td>
-<td>7.591668</td>
-<td>0.006245</td>
-<td>0.001179</td>
-<td>0.454033</td>
-<td>23.127918</td>
-<td>4.830282</td>
-<td>-0.124964</td>
-<td>1.471010</td>
+<td>1.193947</td>
+<td>0.011719</td>
+<td>7.711086</td>
+<td>0.007427</td>
+<td>0.001411</td>
+<td>0.501326</td>
+<td>27.054613</td>
+<td>5.224933</td>
+<td>-0.125767</td>
+<td>1.423244</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>partB_trial05.csv</td>
-<td>1.182452</td>
-<td>0.013770</td>
-<td>7.170450</td>
-<td>0.007182</td>
-<td>0.001352</td>
-<td>0.687465</td>
-<td>20.058495</td>
-<td>4.530893</td>
-<td>-0.228860</td>
-<td>1.525057</td>
+<td>1.190590</td>
+<td>0.010510</td>
+<td>7.272554</td>
+<td>0.008152</td>
+<td>0.001545</td>
+<td>0.777536</td>
+<td>23.914188</td>
+<td>4.951105</td>
+<td>-0.234626</td>
+<td>1.468530</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>partB_trial06.csv</td>
-<td>1.183477</td>
-<td>0.016683</td>
-<td>7.515907</td>
-<td>0.010483</td>
-<td>0.001974</td>
-<td>0.889731</td>
-<td>18.962233</td>
-<td>4.444306</td>
-<td>-0.299986</td>
-<td>1.607184</td>
+<td>1.194498</td>
+<td>0.012204</td>
+<td>7.766293</td>
+<td>0.012864</td>
+<td>0.002446</td>
+<td>1.110190</td>
+<td>23.786809</td>
+<td>5.001404</td>
+<td>-0.345433</td>
+<td>1.538123</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>partB_trial07.csv</td>
-<td>1.181411</td>
-<td>0.015671</td>
-<td>7.377127</td>
-<td>0.010014</td>
-<td>0.001883</td>
-<td>0.877891</td>
-<td>18.781007</td>
-<td>4.421507</td>
-<td>-0.305023</td>
-<td>1.616935</td>
+<td>1.192161</td>
+<td>0.010825</td>
+<td>7.582782</td>
+<td>0.011781</td>
+<td>0.002235</td>
+<td>1.049141</td>
+<td>23.610785</td>
+<td>4.970537</td>
+<td>-0.331363</td>
+<td>1.535425</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>partB_trial08.csv</td>
-<td>1.181405</td>
-<td>0.016501</td>
-<td>7.142454</td>
-<td>0.007075</td>
-<td>0.001330</td>
-<td>0.613487</td>
-<td>20.023268</td>
-<td>4.516362</td>
-<td>-0.206834</td>
-<td>1.515084</td>
+<td>1.190674</td>
+<td>0.011806</td>
+<td>7.267574</td>
+<td>0.008275</td>
+<td>0.001568</td>
+<td>0.760904</td>
+<td>23.820237</td>
+<td>4.939020</td>
+<td>-0.239859</td>
+<td>1.472462</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>partB_trial09.csv</td>
-<td>1.185537</td>
-<td>0.018647</td>
-<td>7.818244</td>
-<td>0.011255</td>
-<td>0.002124</td>
-<td>1.017471</td>
-<td>19.747118</td>
-<td>4.558540</td>
-<td>-0.331758</td>
-<td>1.642972</td>
+<td>1.198970</td>
+<td>0.015321</td>
+<td>8.118830</td>
+<td>0.013719</td>
+<td>0.002618</td>
+<td>1.246257</td>
+<td>25.154085</td>
+<td>5.167364</td>
+<td>-0.367694</td>
+<td>1.555449</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>partB_trial10.csv</td>
-<td>1.183341</td>
-<td>0.016820</td>
-<td>7.552322</td>
-<td>0.010731</td>
-<td>0.002021</td>
-<td>0.881469</td>
-<td>18.930528</td>
-<td>4.439090</td>
-<td>-0.301257</td>
-<td>1.609802</td>
+<td>1.195415</td>
+<td>0.009717</td>
+<td>7.818423</td>
+<td>0.013185</td>
+<td>0.002509</td>
+<td>1.143893</td>
+<td>23.806116</td>
+<td>5.010920</td>
+<td>-0.365398</td>
+<td>1.551240</td>
 </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>:::</p>
+</div>
 </section>
 </section>
-<section id="part-c-nonlinear-regime-large-angles" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Part C: Nonlinear Regime (Large Angles)</h1>
+<section id="part-c-nonlinear-regime-large-angles" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Part C: Nonlinear Regime (Large Angles)</h1>
 <p>Use <code>partC_trialXX.csv</code>. For large angle trials (θ0 &gt; 45°), measure period variation vs amplitude and compare with small-angle theory.</p>
-<section id="period-analysis" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="period-analysis"><span class="header-section-number">5.1</span> Period Analysis</h2>
+<section id="period-analysis" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="period-analysis"><span class="header-section-number">6.1</span> Period Analysis</h2>
 </section>
-<section id="comparison-and-discussion" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="comparison-and-discussion"><span class="header-section-number">5.2</span> Comparison and Discussion</h2>
-<div id="a4c12b96" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>file_pattern <span class="op">=</span> os.path.join(DATA_DIR, <span class="st">'partC_trial*.csv'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(file_pattern))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>period_vs_amp <span class="op">=</span> []</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fpath <span class="kw">in</span> files:</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> load_trial_csv(fpath)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> df[<span class="st">'time'</span>].values</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> df[<span class="st">'accel'</span>].values</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    x_smooth <span class="op">=</span> signal.savgol_filter(x, <span class="dv">11</span>, <span class="dv">3</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    periods, peaks <span class="op">=</span> estimate_period_via_peaks(t, x_smooth, prominence<span class="op">=</span>np.std(x_smooth)<span class="op">*</span><span class="fl">0.5</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    peak_times <span class="op">=</span> t[peaks] <span class="cf">if</span> <span class="bu">len</span>(peaks)<span class="op">&gt;</span><span class="dv">0</span> <span class="cf">else</span> np.array([])</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    peak_amps <span class="op">=</span> np.<span class="bu">abs</span>(x_smooth[peaks]) <span class="cf">if</span> <span class="bu">len</span>(peaks)<span class="op">&gt;</span><span class="dv">0</span> <span class="cf">else</span> np.array([])</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(peak_amps)<span class="op">&gt;</span><span class="dv">0</span> <span class="kw">and</span> <span class="bu">isinstance</span>(periods, np.ndarray):</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        period_vs_amp.append({<span class="st">'file'</span>: os.path.basename(fpath), <span class="st">'mean_period'</span>: np.mean(periods), <span class="st">'mean_amp'</span>: np.mean(peak_amps)})</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(period_vs_amp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<section id="comparison-and-discussion" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="comparison-and-discussion"><span class="header-section-number">6.2</span> Comparison and Discussion</h2>
+<div id="5ded0789" class="cell" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
@@ -1153,86 +895,86 @@ Figure&nbsp;3.2: Create subplots for comparison
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>partC_trial01.csv</td>
-<td>1.981914</td>
-<td>1.449503</td>
+<td>1.980948</td>
+<td>1.534838</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>partC_trial02.csv</td>
-<td>1.979063</td>
-<td>0.702695</td>
+<td>1.978929</td>
+<td>0.959526</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>partC_trial03.csv</td>
-<td>1.983025</td>
-<td>1.576847</td>
+<td>1.985779</td>
+<td>1.639512</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
 <td>partC_trial04.csv</td>
-<td>1.981946</td>
-<td>1.659214</td>
+<td>1.978834</td>
+<td>1.720051</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
 <td>partC_trial05.csv</td>
-<td>1.983063</td>
-<td>1.607294</td>
+<td>1.983298</td>
+<td>1.682030</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
 <td>partC_trial06.csv</td>
-<td>1.983063</td>
-<td>1.607294</td>
+<td>1.983298</td>
+<td>1.682030</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
 <td>partC_trial07.csv</td>
-<td>1.982623</td>
-<td>1.560053</td>
+<td>1.980275</td>
+<td>1.619605</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
 <td>partC_trial08.csv</td>
-<td>1.982623</td>
-<td>1.530992</td>
+<td>1.982792</td>
+<td>1.589434</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
 <td>partC_trial09.csv</td>
-<td>1.978476</td>
-<td>1.386825</td>
+<td>1.978276</td>
+<td>1.427852</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">9</th>
 <td>partC_trial10.csv</td>
-<td>1.983739</td>
-<td>1.566655</td>
+<td>1.986847</td>
+<td>1.626142</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">10</th>
 <td>partC_trial11.csv</td>
-<td>1.981989</td>
-<td>1.498077</td>
+<td>1.981307</td>
+<td>1.555946</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">11</th>
 <td>partC_trial12.csv</td>
-<td>1.982213</td>
-<td>1.657862</td>
+<td>1.983832</td>
+<td>1.722022</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">12</th>
 <td>partC_trial13.csv</td>
-<td>1.982001</td>
-<td>1.641470</td>
+<td>1.981823</td>
+<td>1.707549</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">13</th>
 <td>partC_trial14.csv</td>
-<td>1.983316</td>
-<td>1.834556</td>
+<td>1.984343</td>
+<td>1.909402</td>
 </tr>
 </tbody>
 </table>
@@ -1242,18 +984,18 @@ Figure&nbsp;3.2: Create subplots for comparison
 </div>
 </section>
 </section>
-<section id="part-d-noise-discussion" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Part D: Noise Discussion</h1>
+<section id="part-d-noise-discussion" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Part D: Noise Discussion</h1>
 <p>Visually inspect signals and write your qualitative assessment here. Use the examples shown in previous plots. Answer: What are possible noise sources? How do they affect period/damping estimation?</p>
-<section id="qualitative-noise-observation" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="qualitative-noise-observation"><span class="header-section-number">6.1</span> Qualitative Noise Observation</h2>
-<section id="discussion-2" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="discussion-2"><span class="header-section-number">6.1.1</span> Discussion</h3>
+<section id="qualitative-noise-observation" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="qualitative-noise-observation"><span class="header-section-number">7.1</span> Qualitative Noise Observation</h2>
+<section id="discussion-2" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="discussion-2"><span class="header-section-number">7.1.1</span> Discussion</h3>
 </section>
 </section>
 </section>
-<section id="submission-checklist" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Submission Checklist</h1>
+<section id="submission-checklist" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Submission Checklist</h1>
 <ul class="task-list">
 <li><label><input type="checkbox">Export this notebook to PDF: <code>HW1_{STUDENT_ID}.pdf</code> (max 20 A4 pages)</label></li>
 <li><label><input type="checkbox">Create ZIP named <code>HW1_{STUDENT_ID}.zip</code> containing:</label>
@@ -1266,18 +1008,61 @@ Figure&nbsp;3.2: Create subplots for comparison
 <li><label><input type="checkbox">Confirm all equations and figures are numbered and captioned</label></li>
 <li><label><input type="checkbox">Ensure reproducibility: all code cells run from top to bottom without manual path edits (except <code>STUDENT_ID</code>)</label></li>
 </ul>
-<div id="49d08e84" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper: save summary tables and figures</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>summary_csv <span class="op">=</span> os.path.join(BASE_DIR, <span class="ss">f'summary_</span><span class="sc">{</span>STUDENT_ID<span class="sc">}</span><span class="ss">.csv'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'results_df'</span> <span class="kw">in</span> <span class="bu">globals</span>():</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    results_df.to_csv(os.path.join(BASE_DIR, <span class="st">'summary_partA.csv'</span>), index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'results_B'</span> <span class="kw">in</span> <span class="bu">globals</span>():</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame(results_B).to_csv(os.path.join(BASE_DIR, <span class="st">'summary_partB.csv'</span>), index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Saved summary CSVs to'</span>, BASE_DIR)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b672409f" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-stdout">
 <pre><code>Saved summary CSVs to .</code></pre>
 </div>
 </div>
+</section>
+<section id="reproduce-guide" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Reproduce Guide</h1>
+<section id="how-to-reproduce-this-analysis" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="how-to-reproduce-this-analysis"><span class="header-section-number">9.1</span> How to Reproduce This Analysis</h2>
+<ol type="1">
+<li><strong>Install Required Software</strong>
+<ul>
+<li>Install <a href="https://www.python.org/downloads/">Python 3.8+</a>.</li>
+<li>Install <a href="https://quarto.org/docs/get-started/">Quarto</a>.</li>
+<li>(Optional) Install <a href="https://jupyter.org/">JupyterLab</a> for interactive editing.</li>
+</ul></li>
+<li><strong>Set Up the Environment</strong>
+<ul>
+<li><p>Open a terminal in the project root folder.</p></li>
+<li><p>(Recommended) Create a virtual environment:</p>
+<pre><code>python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate</code></pre></li>
+<li><p>Install dependencies:</p>
+<pre><code>pip install -r requirements.txt</code></pre></li>
+</ul></li>
+<li><strong>Prepare Data</strong>
+<ul>
+<li>Place your raw data CSV files in the <code>Data/</code> folder as described in the instructions.</li>
+<li>Ensure filenames match the expected patterns (e.g., <code>partA_trial01.csv</code>).</li>
+</ul></li>
+<li><strong>Edit Metadata</strong>
+<ul>
+<li>Open <code>HW1_STUDENTID.qmd</code> and set your <code>STUDENT_ID</code>, name, and date at the top.</li>
+</ul></li>
+<li><strong>Render the Report</strong>
+<ul>
+<li><p>To render as HTML:</p>
+<pre class="shell"><code>quarto render HW1_STUDENTID.qmd --to html</code></pre></li>
+<li><p>To render as PDF (requires a LaTeX installation):</p>
+<pre><code>quarto render HW1_STUDENTID.qmd --to pdf</code></pre></li>
+</ul></li>
+<li><strong>Troubleshooting</strong>
+<ul>
+<li>If you encounter missing package errors, install them with <code>pip install &lt;package&gt;</code>.</li>
+<li>Ensure all code cells run from top to bottom without manual edits except for <code>STUDENT_ID</code>.</li>
+</ul></li>
+<li><strong>Export and Submit</strong>
+<ul>
+<li>Export the rendered PDF and required files as described in the submission checklist.</li>
+</ul></li>
+</ol>
+<p><strong>Tip:</strong> For interactive exploration, you can open the <code>.qmd</code> file in JupyterLab or VS Code with the Quarto extension.</p>
+<p><strong>Contact:</strong> If you have issues reproducing the results, check your Python/Quarto versions and data file structure.</p>
+</section>
 </section>
 
 </main>

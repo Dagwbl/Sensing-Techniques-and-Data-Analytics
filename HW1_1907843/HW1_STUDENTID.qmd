@@ -12,7 +12,6 @@ format:
         toc: true
         number-sections: true
         colorlinks: true
-
 crossref:
   chapters: true
 editor: 
@@ -45,7 +44,8 @@ editor:
 Each analysis part includes: data loading, visualization, statistical descriptors, period estimation, damping estimation, and discussion cells.
 
 ```{python}
-#| label: Imports and settings
+#| label: imports-and-settings
+#| echo: false
 import os
 import glob
 import numpy as np
@@ -114,7 +114,8 @@ where:
   * $g$ = gravitational acceleration ($9.81, m/s^2$)
 
 ```{python}
-#| label: Theoretical data for comparison
+#| label: theoretical-data-for-comparison
+#| echo: false
 def generate_theoretical_pendulum(L, t_max=10, dt=0.01, theta0=15, g=9.81):
     """Generate theoretical pendulum motion for small angles
     Args:
@@ -180,7 +181,8 @@ where:
   * $t$ = elapsed time (seconds)
 
 ```{python}
-#| label: Damped Oscillation
+#| label: damped-oscillation
+#| echo: false
 def generate_damped_pendulum(L, t_max=10, dt=0.01, theta0=15, zeta=0.1, g=9.81):
     """Generate damped pendulum motion
     Args:
@@ -237,9 +239,31 @@ plt.show()
 ```
 
 # Data Preprocessing
+The data has been processed as follows:
+1. Data slices, becuse the beginning and the end of the data contain external forces that manually interfered, only the middle data is taken(t from 500 to 5000).
+2. 还原振幅，由于手机传感器只记录了加速度数据，并没有记录振幅，采用 @eq-compute-amplitude 近似还原峰值振幅。
+   $$
+   A=\frac {​∣apeak​∣} ​{ω_0^2}
+   $${#eq-compute-amplitude}
+
 
 ```{python}
-#| label: extract and rename data
+#| label: load_trial_csv
+#| echo: false
+def load_trial_csv(path,start=500,end=5000):
+    """Load CSV exported from PhyPhox. 
+    Assumes time column 'time' (s) and acceleration axis 'accel' aligned with swing direction.
+    Adjust column names below if your CSV uses different headers."""
+    df = pd.read_csv(path)
+    time_col = df.columns[0]
+    # choose accel axis heuristically
+    accel_col = df.columns[2]
+    df = df.rename(columns={time_col: 'time', accel_col: 'accel'})
+    return df[['time','accel']].iloc[start:end]  # trim start/end
+```
+
+```{python}
+#| label: extract-and-rename-data
 #| echo: false
 import zipfile
 import os
@@ -322,22 +346,7 @@ if __name__ == "__main__" and False:
 ```
 
 ```{python}
-#| label: load_trial_csv
-
-def load_trial_csv(path,start=500,end=10000):
-    """Load CSV exported from PhyPhox. 
-    Assumes time column 'time' (s) and acceleration axis 'accel' aligned with swing direction.
-    Adjust column names below if your CSV uses different headers."""
-    df = pd.read_csv(path)
-    time_col = df.columns[0]
-    # choose accel axis heuristically
-    accel_col = df.columns[2]
-    df = df.rename(columns={time_col: 'time', accel_col: 'accel'})
-    return df[['time','accel']].iloc[start:end]  # trim start/end
-```
-
-```{python}
-#| label: compute descriptors
+#| label: compute-descriptors
 #| echo: false
 #| output: false
 def compute_descriptors(x):
@@ -353,21 +362,12 @@ def compute_descriptors(x):
 
 ## Peak-detection algorithms
 
-The estimate_period_via_peaks function is designed to estimate the periods of oscillatory signals by identifying the time intervals between successive peaks in the data. It uses the find_peaks method from the scipy.signal module to locate prominent peaks in the signal, then calculates the time differences between these peaks to determine the periods. This approach is commonly used for analyzing periodic signals, such as those from pendulum or vibration experiments.
+In order to estimate the periods of oscillatory signals by identifying the time intervals between successive peaks in the data. It uses the find_peaks method from the scipy.signal module to locate prominent peaks in the signal, then calculates the time differences between these peaks to determine the periods. This approach is commonly used for analyzing periodic signals, such as those from pendulum or vibration experiments.
 
-Key points:
-
-Inputs:
-time: Array of time values.
-signal_data: Array of signal measurements (e.g., acceleration).
-prominence and distance: Parameters to control peak detection sensitivity.
-Outputs:
-periods: Array of estimated periods (time differences between peaks).
-peaks: Indices of detected peaks.
-This function is useful for extracting the fundamental period of a signal in experimental data analysis.
 
 ```{python}
-#| label: estimate period via peaks
+#| label: estimate-period-via-peaks
+#| echo: false
 def estimate_period_via_peaks(time, signal_data, prominence=0.5, distance=None):
     # find peaks (positive swings)
     peaks, props = signal.find_peaks(signal_data, prominence=prominence, distance=distance)
@@ -377,8 +377,11 @@ def estimate_period_via_peaks(time, signal_data, prominence=0.5, distance=None):
     periods = np.diff(peak_times)
     return periods, peaks
 ```
+
+
 ```{python}
-#| label: fit exponential decay
+#| label: fit-exponential-decay
+#| echo: false
 def fit_exponential_decay(peak_times, peak_amps, Tn=None):
     """Fit A(t) = A0 * exp(-zeta * 2*pi / Tn * t)
     If Tn is None, fit exponent parameter directly as A0 * exp(-k t) and compute zeta from k and Tn supplied per-trial.
@@ -400,7 +403,8 @@ def fit_exponential_decay(peak_times, peak_amps, Tn=None):
     return {'A0': A0, 'k': k, 'zeta': zeta}
 ```
 ```{python}
-#| label: theoretical period
+#| label: theoretical-period
+#| echo: false
 def theoretical_period(L, g=9.81):
     return 2*np.pi*np.sqrt(L/g)
 ```
@@ -432,7 +436,6 @@ List all Part A trials and compute descriptors, output as @tbl-part-a, for assur
 #| tbl-cap: Summary of Part A
 #| output: true
 #| echo: false
-#| 
 summary = []
 
 for fpath in files:
@@ -544,10 +547,11 @@ Compare with theoretical, the diffirence is `{python} diff_period_a`.
 
 
 ## Damping Analysis
-Using the last trial as example, We can use images to further reveal the characteristics of the data. @fig-simple-pendulum-analysis-1
+Using the last trial as example, We can use images to further reveal the characteristics of the data. @fig-simple-pendulum-analysis
 ```{python}
 #| label: fig-simple-pendulum-analysis
 #| fig-cap: Create subplots for comparison
+#| echo: false
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
 
 # Plot 1: Raw vs Smoothed Signal
@@ -598,6 +602,7 @@ TODO: mybe we can use the accelerator inversely calculate the amplitude, but thi
 ```{python}
 #| label: fig-peak-amplitudes-part-a
 #| fig-cap: "Peak amplitudes over time for 10 trials (Part A)"
+#| echo: false
 fig, ax = plt.subplots(figsize=(12, 6))
 for idx, fpath in enumerate(files[:10]):
     df = load_trial_csv(fpath)
@@ -627,6 +632,7 @@ TODO: analyze the difference
 # Fit exponential decay to all 10 trials and report mean/std of damping ratio ζ
 
 ```{python}
+#| echo: false
 zeta_list = []
 for idx, fpath in enumerate(files[:10]):
     df = load_trial_csv(fpath)
@@ -664,7 +670,8 @@ Repeat analysis from Part A for `partB_trialXX.csv` files. Adjust `L_long` below
 ## Comparative Study
 
 ```{python}
-#| label: Part B long Pendulum
+#| label: part-b-long-pendulum
+#| echo: false
 L_long = 1.0
 file_pattern = os.path.join(DATA_DIR, 'partB_trial*.csv')
 files = sorted(glob.glob(file_pattern))
@@ -709,6 +716,8 @@ Use `partC_trialXX.csv`. For large angle trials (θ0 > 45°), measure period var
 
 
 ```{python}
+#| echo: false
+
 file_pattern = os.path.join(DATA_DIR, 'partC_trial*.csv')
 files = sorted(glob.glob(file_pattern))
 period_vs_amp = []
@@ -749,6 +758,7 @@ Visually inspect signals and write your qualitative assessment here. Use the exa
 
 
 ```{python}
+#| echo: false
 # Helper: save summary tables and figures
 summary_csv = os.path.join(BASE_DIR, f'summary_{STUDENT_ID}.csv')
 if 'results_df' in globals():
@@ -787,7 +797,7 @@ print('Saved summary CSVs to', BASE_DIR)
 
 5. **Render the Report**
     - To render as HTML:
-      ```
+      ```shell
       quarto render HW1_STUDENTID.qmd --to html
       ```
     - To render as PDF (requires a LaTeX installation):
